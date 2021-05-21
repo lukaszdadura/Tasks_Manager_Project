@@ -22,9 +22,8 @@ public class Main {
         if (!Files.exists(pathTasks)) {
             System.out.println("There is no task file!");
         }
-
-        //Czytam plik i wpisuje do listy. Do tablicy dwuwymiarowej wpisuje eleemnty przyjmujac za wiersze ilosc linii, a za kolumny Stringi po przecinku w linii
         String[][] tasksLinesElements = null;
+        //Czytam plik i wpisuje do listy. Do tablicy dwuwymiarowej wpisuje eleemnty przyjmujac za wiersze ilosc linii, a za kolumny Stringi po przecinku w linii
         try {
             List<String> tasksLines = Files.readAllLines(pathTasks);
            // System.out.println(tasksLines);
@@ -76,8 +75,13 @@ public class Main {
                         System.out.println("Please select number to remove");
                         String numberToRemove = scanner.nextLine();
                         Integer numberToRemoveChanged = Integer.parseInt(numberToRemove);
+                        while (numberToRemoveChanged < 0) {
+                            System.out.println("Incorrect argument passed. Please give number greater or equal 0 and lower or equal last task number.");
+                            scanner.nextLine();
+                        }
                         if (numberToRemoveChanged < tasksLinesElements.length) {
                             tasksLinesElements = ArrayUtils.remove(tasksLinesElements, numberToRemoveChanged);
+                            System.out.println("Value was successfully removed");
                         }
                         break;
                     case "list":
