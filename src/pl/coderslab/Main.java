@@ -72,8 +72,8 @@ public class Main {
                 case "remove":
                     System.out.println("Please select number to remove");
                     String numberToRemove = scanner.nextLine();
-                    Integer numberToRemoveChanged = Integer.parseInt(numberToRemove);
-                    while (numberToRemoveChanged < 0) {
+                    int numberToRemoveChanged = Integer.parseInt(numberToRemove);
+                    while (numberToRemoveChanged <0) {
                         System.out.println("Incorrect argument passed. Please give number greater or equal 0 and lower or equal last task number.");
                         scanner.nextLine();
                     }
