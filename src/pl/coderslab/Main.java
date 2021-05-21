@@ -1,16 +1,22 @@
 package pl.coderslab;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    static String[][] tasksLinesElements1;
 
     public static void main(String[] args) {
+
+
 
         Path pathTasks = Paths.get("tasks.csv");
         if (!Files.exists(pathTasks)) {
@@ -67,6 +73,12 @@ public class Main {
                        // scanner.close();
                         break;
                     case "remove":
+                        System.out.println("Please select number to remove");
+                        String numberToRemove = scanner.nextLine();
+                        Integer numberToRemoveChanged = Integer.parseInt(numberToRemove);
+                        if (numberToRemoveChanged < tasksLinesElements.length) {
+                            tasksLinesElements = ArrayUtils.remove(tasksLinesElements, numberToRemoveChanged);
+                        }
                         break;
                     case "list":
                         for (int i = 0; i < tasksLinesElements.length; i++) {
@@ -83,7 +95,7 @@ public class Main {
                         for (int i = 0; i < tasksLinesElements.length; i++) {
                             lines[i] = String.join(",", tasksLinesElements[i]);
                             try {
-                                Files.write(pathTasks, Arrays.asList(lines));
+                                Files.write(pathTasks, Arrays.asList(lines), StandardOpenOption.TRUNCATE_EXISTING);
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 System.out.println("There is some problem with saving file!");
