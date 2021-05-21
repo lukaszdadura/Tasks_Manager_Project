@@ -64,6 +64,18 @@ public class Main {
                         }
                         break;
                     case "exit":
+                        String[] lines = new String[tasksLinesElements.length];
+                        for (int i = 0; i < tasksLinesElements.length; i++) {
+                            lines[i] = String.join(",", tasksLinesElements[i]);
+                            try {
+                                Files.write(pathTasks, Arrays.asList(lines));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                System.out.println("There is some problem with saving file!");
+                            }
+                            System.out.println(ConsoleColors.RED + "Bye, bye.");
+                            System.exit(0);
+                        }
                         break;
                     default:
                         System.out.println("Type right option!");
