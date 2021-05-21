@@ -51,6 +51,20 @@ public class Main {
                 String typedOption = scanner.nextLine();
                 switch (typedOption) {
                     case "add":
+
+                      //  Scanner scanner1 = new Scanner(System.in);
+                        System.out.println("Please add task description");
+                        String description = scanner.nextLine();
+                        System.out.println("Please add task due date");
+                        String dueDate = scanner.nextLine();
+                        System.out.println("Is your task important: true/false");
+                        String important = scanner.nextLine();
+                        Arrays.copyOf(tasksLinesElements, tasksLinesElements.length+1);
+                        tasksLinesElements[tasksLinesElements.length-1] = new String[3];
+                        tasksLinesElements[tasksLinesElements.length-1][0] = description;
+                        tasksLinesElements[tasksLinesElements.length-1][1] = dueDate;
+                        tasksLinesElements[tasksLinesElements.length-1][2] = description;
+                       // scanner.close();
                         break;
                     case "remove":
                         break;
@@ -62,6 +76,7 @@ public class Main {
                             }
                             System.out.println();
                         }
+                       // scanner.close();
                         break;
                     case "exit":
                         String[] lines = new String[tasksLinesElements.length];
